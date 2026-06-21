@@ -132,13 +132,13 @@ EXEC sp_configure 'Database Mail XPs', 1;    RECONFIGURE
 -- Step 2: Create a mail account
 EXEC msdb.dbo.sysmail_add_account_sp
     @account_name    = 'SQLAlerts',
-    @email_address   = 'thapelomrk25@gmail.com',
+    @email_address   = 'your-email@gmail.com',
     @display_name    = 'SQL Server Alerts',
     @mailserver_name = 'smtp.gmail.com',
     @port            = 587,
     @enable_ssl      = 1,
-    @username        = 'thapelomrk25@gmail.com',
-    @password        = 'fenn jrfv tqhh dlfz'
+    @username        = 'your-email@gmail.com',
+    @password        = 'your-app-password-here'
 
 -- Step 3: Create a profile and link the account
 EXEC msdb.dbo.sysmail_add_profile_sp
@@ -152,7 +152,7 @@ EXEC msdb.dbo.sysmail_add_profileaccount_sp
 -- Testing the email
 EXEC msdb.dbo.sp_send_dbmail
     @profile_name = 'DBAAlertProfile',
-    @recipients   = 'thapelomrk25@gmail.com',
+    @recipients   = 'your-email@gmail.com',
     @subject      = 'Test alert',
     @body         = 'Database Mail is working.'
 
@@ -184,7 +184,7 @@ BEGIN
 
         EXEC msdb.dbo.sp_send_dbmail
             @profile_name = 'DBAAlertProfile',
-            @recipients   = 'thapelomrk25@gmail.com',
+            @recipients   = 'your-email@gmail.com',
             @subject      = 'ALERT: Product Price Changed',
             @body         = @Body1
     END
@@ -209,7 +209,7 @@ BEGIN
                
     EXEC msdb.dbo.sp_send_dbmail
         @profile_name = 'DBAAlertProfile',
-        @recipients   = 'thapelomrk25@gmail.com',
+        @recipients   = 'your-email@gmail.com',
         @subject      = 'ALERT: Customer Record Deleted',
         @body         = @Body2
 END
@@ -233,7 +233,7 @@ BEGIN
 
     EXEC msdb.dbo.sp_send_dbmail
         @profile_name = 'DBAAlertProfile',
-        @recipients   = 'thapelomrk25@gmail.com',
+        @recipients   = 'your-email@gmail.com',
         @subject      = 'ALERT: Product Record Deleted',
         @body         = @Body3
 END
@@ -260,7 +260,7 @@ BEGIN
 
         EXEC msdb.dbo.sp_send_dbmail
             @profile_name = 'DBAAlertProfile',
-            @recipients   = 'thapelomrk25@gmail.com',
+            @recipients   = 'your-email@gmail.com',
             @subject      = 'ALERT: Critical Customer Data Updated',
             @body         = @Body4
     END
@@ -297,7 +297,7 @@ BEGIN
 
         EXEC msdb.dbo.sp_send_dbmail
             @profile_name = 'DBAAlertProfile',
-            @recipients   = 'thapelomrk25@gmail.com',
+            @recipients   = 'your-email@gmail.com',
             @subject      = 'Price change alert',
             @body         = @Body5
     END
@@ -326,11 +326,11 @@ BEGIN
 
     EXEC msdb.dbo.sp_send_dbmail
         @profile_name = 'DBAAlertProfile',
-        @recipients   = 'thapelomrk25@gmail.com',
+        @recipients   = 'your-email@gmail.com',
         @subject      = 'Sensitive data Alert',
         @body         = @Body6
 END
 GO
 
 -- Test SensitiveData trigger
-UPDATE Person.Person SET FirstName = 'masana' WHERE BusinessEntityID = 2
+UPDATE Person.Person SET FirstName = 'Name' WHERE BusinessEntityID = 2
